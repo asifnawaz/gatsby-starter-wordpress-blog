@@ -31,7 +31,7 @@ module.exports = {
           `https://urdunews.ga/graphql`,
       },
       perPage: 10,
-      concurrentRequests: 5,
+      concurrentRequests: 3,
 
     },
 
