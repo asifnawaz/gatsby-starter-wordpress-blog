@@ -30,6 +30,9 @@ module.exports = {
           process.env.WPGRAPHQL_URL ||
           `https://urdunews.ga/graphql`,
       },
+      perPage: 20,
+      concurrentRequests: 5,
+
     },
 
     /**
