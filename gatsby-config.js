@@ -26,11 +26,21 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        url:
-          process.env.WPGRAPHQL_URL ||
-          `https://urdunews.ga/graphql`,
+        url:'https://urdunews.ga/graphql',
+ 	 type: {
+      MediaItem: {
+        localFile: {
+          maxFileSizeBytes: 1048576, // 1mb
+          requestConcurrency: 10,
+
+        		},
+   	   	},
+   	   },
       },
-      perPage: 10,
+    schema: {
+      timeout: 90000,
+    },
+      perPage: 5,
       concurrentRequests: 3,
 
     },
@@ -70,7 +80,14 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
+	{
+resolve:'gatsby-plugin-google-analytics',
+	
+	           options: {
+        trackingId: "UA-72618212-17",
 
+	},
+	},
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
 
