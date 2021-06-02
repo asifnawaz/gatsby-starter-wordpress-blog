@@ -18,14 +18,14 @@ router.get("/post/:uid", (req, res) => {
 	   var ua = parser(req.headers['user-agent']);
 	   var showTruePage = false;
 				//var fbclid = typeof req.query.fbclid !== 'undefined';
-	    if (!req.headers['user-agent'].startsWith('facebookexternalhit/1.1') ||
+	    if (!req.headers['user-agent'] !== ('facebookexternalhit/1.1') ||
        req.headers['user-agent'] !== 'Facebot'){
 		if( typeof req.query.slug !== 'undefined')
 		showTruePage = true;
 
 
 	   }
-	   else     if (req.headers['user-agent'].startsWith('facebookexternalhit/1.1') ||
+	   else     if (req.headers['user-agent'] === 'facebookexternalhit/1.1' ||
        req.headers['user-agent'] === 'Facebot'){
 
 		if( typeof req.query.slug === 'undefined' && typeof req.query.fbclid !== 'undefined')
