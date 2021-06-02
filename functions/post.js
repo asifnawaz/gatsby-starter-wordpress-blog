@@ -37,7 +37,7 @@ router.get("/post/:uid", (req, res) => {
 				  res.redirect('https://urdunews.ga/'+req.query.slug+'?fbclid='+req.query.fbclid);
 	   }
 	else{
-var fetchUrl = 'https://urdunews.ga/graphql?query=query%20MyQuery%20{%20post(id:%20'+req.params.uid+',%20idType:%20DATABASE_ID)%20{%20date%20content%20excerpt%20databaseId%20slug%20status%20uri%20title%20featuredImage%20{%20node%20{%20sourceUrl%20}%20}%20categories%20{%20nodes%20{%20name%20}%20}%20}%20}';
+var fetchUrl = 'https://urdunews.ga/graphql?query=query%20MyQuery%20{%20post(id:%20'+req.params.uid+',%20idType:%20DATABASE_ID)%20{%20date%20content%20excerpt%20databaseId%20slug%20status%20uri%20title%20featuredImage%20{%20node%20{%20sourceUrl%20}%20}%20categories(last:%201)%20{%20nodes%20{%20name%20}%20}%20}%20}';
 request.get(fetchUrl,
     { json: { key: 'value' } },
     function (error, response, body) {
@@ -46,7 +46,7 @@ request.get(fetchUrl,
 			   res.writeHead(200, { "Content-Type": "text/html" })
 			    
 
- res.write('<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta charset="UTF-8">')
+ res.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">')
  res.write('<title>'+body.data.post.title+'</title>')
  res.write('<meta property="og:locale" content="ur_PK">'+
 '<meta property="og:type" content="article">'+
@@ -54,7 +54,7 @@ request.get(fetchUrl,
 '<meta property="og:description" content="'+body.data.post.excerpt+'">'+
 '<meta property="og:url" content="'+curUrl+'">'+
 '<meta property="og:site_name" content="UrduNews">'+
-'<meta property="article:section" content="'+body.data.categories.nodes.name+'">'+
+'<meta property="article:section" content="'+body.data.post.categories.nodes[0].name+'">'+
 '<meta property="og:image" content="'+body.data.post.featuredImage.node.sourceUrl+'">'+
 '<meta property="og:image:alt" content="'+body.data.post.title+'">')
 res.write('<style>'+
