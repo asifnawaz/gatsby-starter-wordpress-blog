@@ -48,9 +48,8 @@ const Layout = ({ isHomePage, children }) => {
       <main>{children}</main>
 
       <footer>
-        © {new Date().getFullYear()}, Built with &heart;
+        © {new Date().getFullYear()}, Built with Love
         {` `}
-			{JSON.stringify(userAgent.data, null, 1)}
       </footer>
     </div>
   )
