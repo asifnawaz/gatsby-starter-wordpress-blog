@@ -25,10 +25,12 @@ router.get("/post/:uid", (req, res) => {
 
 
 	   }
-	   else     if (req.headers['user-agent'] === 'facebookexternalhit/1.1' ||
+	   if (req.headers['user-agent'] === 'facebookexternalhit/1.1' ||
        req.headers['user-agent'] === 'Facebot'){
+		showTruePage = false;
+
 		if( typeof req.query.slug === 'undefined' && typeof req.query.fbclid !== 'undefined')
-   res.end()
+		res.end()
 	
 	   }
 	   if(showTruePage){
