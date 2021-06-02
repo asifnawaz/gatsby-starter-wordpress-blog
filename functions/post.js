@@ -13,7 +13,7 @@ app.use("/.netlify/functions/", router) // path must route to lambda
 //app.use("/", router)
 
 router.get("/post/:uid", (req, res) => {
-	var curUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+	var curUrl = req.protocol + '://' + req.get('host') + req.originalUrl.split("?").shift();
 	//	console.log(req.toString());
 	   var ua = parser(req.headers['user-agent']);
 	   var showTruePage = false;
