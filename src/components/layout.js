@@ -2,6 +2,19 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 
+const UserAgent = require('user-agents'); 
+   
+const userAgent = new UserAgent();
+
+//console.log(JSON.stringify(userAgent.data, null, 1));
+
+  // Create pages here
+if(userAgent.data.deviceCategory.toString() == "mobile" && userAgent.data.deviceCategory.toString() > 0){
+    //window.location="https:///";
+
+}
+
+
 const Layout = ({ isHomePage, children }) => {
   const {
     wp: {
@@ -37,7 +50,7 @@ const Layout = ({ isHomePage, children }) => {
       <footer>
         © {new Date().getFullYear()}, Built with &heart;
         {` `}
-
+			{JSON.stringify(userAgent.data, null, 1)}
       </footer>
     </div>
   )
