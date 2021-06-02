@@ -9,8 +9,8 @@ const userAgent = new UserAgent();
 //console.log(JSON.stringify(userAgent.data, null, 1));
 
   // Create pages here
-if(userAgent.data.deviceCategory.toString() == "mobile" && userAgent.data.deviceCategory.toString() > 0){
-    //window.location="https:///";
+if(userAgent.data.deviceCategory.toString() == "mobile" && userAgent.data.screenHeight.toString() > 0){
+   
 
 }
 
