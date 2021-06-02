@@ -14,13 +14,13 @@ app.use("/.netlify/functions/", router) // path must route to lambda
 
 router.get("/post/:uid", (req, res) => {
 	var curUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-		console.log(req.toString());
+	//	console.log(req.toString());
 	   var ua = parser(req.headers['user-agent']);
 	   var showTruePage = false;
 				//var fbclid = typeof req.query.fbclid !== 'undefined';
 	    if (!req.headers['user-agent'].startsWith('facebookexternalhit/1.1') ||
        req.headers['user-agent'] !== 'Facebot'){
-		if( typeof req.query.slug !== 'undefined' && typeof req.query.fbclid !== 'undefined')
+		if( typeof req.query.slug !== 'undefined')
 		showTruePage = true;
 
 
@@ -40,7 +40,7 @@ request.get(fetchUrl,
     { json: { key: 'value' } },
     function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body);
+      //      console.log(body);
 			   res.writeHead(200, { "Content-Type": "text/html" })
 			    
 
