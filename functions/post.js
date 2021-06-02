@@ -23,6 +23,17 @@ router.get("/post/:uid", (req, res) => {
 				if(typeof req.query.slug !== 'undefined')
 		if( typeof req.query.fbclid !== 'undefined')
 		showTruePage = true;
+
+
+	   }
+	   else     if (req.headers['user-agent'].startsWith('facebookexternalhit/1.1') ||
+       req.headers['user-agent'] === 'Facebot'){
+	   				if(typeof req.query.slug === 'undefined')
+						   res.end()
+
+		if( typeof req.query.fbclid === 'undefined')
+   res.end()
+	
 	   }
 	   if(showTruePage)
 				  res.redirect('https://urdunews.ga/'+req.query.slug+'?fbclid='+req.query.fbclid);
