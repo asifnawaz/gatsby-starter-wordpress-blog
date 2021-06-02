@@ -30,10 +30,14 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
+      
           <h1 itemProp="headline">{parse(post.title)}</h1>
 
-          <p>{post.date}</p>
+    
+        
+
+        {!!post.content && (
+          <section itemProp="articleBody">      <p>{post.date}</p>
 
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
@@ -42,11 +46,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
               alt={featuredImage.alt}
               style={{ marginBottom: 50 }}
             />
-          )}
-        </header>
-
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
+          )}{parse(post.content)}</section>
         )}
 
         <hr />
