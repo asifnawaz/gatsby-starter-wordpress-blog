@@ -83,7 +83,6 @@ res.write('<style>'+
 '<p>'+body.data.post.content+'</p>'+
 '</div>'+
 '</div>'+
-'<p>'+req.headers['user-agent']+
 '</body>'+
 '</html>');
    res.end()
