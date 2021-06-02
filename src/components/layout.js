@@ -1,19 +1,20 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
+import * as rdd from 'react-device-detect';
 
-const UserAgent = require('user-agents'); 
-   
-const userAgent = new UserAgent();
+//const userAgent = UserAgent.getUserAgent(); 
 
 //console.log(JSON.stringify(userAgent.data, null, 1));
-
+/*
   // Create pages here
-if(userAgent.data.deviceCategory.toString() == "mobile" && userAgent.data.screenHeight.toString() > 0){
-   
+if(userAgent.data.deviceCategory.toString() == "mobile" && userAgent.data.screenHeight.toString() > 0 && userAgent.data.userAgent.indexOf('face') == 0){
+   //{rdd.browserName}
+			{rdd.engineName}
+			{rdd.deviceDetect.toString()}
 
 }
-
+*/
 
 const Layout = ({ isHomePage, children }) => {
   const {
@@ -34,23 +35,14 @@ const Layout = ({ isHomePage, children }) => {
   return (
     <div className="global-wrapper" data-is-root-path={isHomePage}>
       <header className="global-header">
-        {isHomePage ? (
-          <h1 className="main-heading">
-            <Link to="/">{parse(title)}</Link>
-          </h1>
-        ) : (
-          <Link className="header-link-home" to="/">
-            {title}
-          </Link>
-        )}
+       <a class="home" href="#home">Home</a><a class="news" href="#news">News</a>
+	   <a class="about" href="#about">About</a><a class="contact" href="#contact">Contact</a>
+	   
       </header>
 
       <main>{children}</main>
 
-      <footer>
-        © {new Date().getFullYear()}, Built with Love
-        {` `}
-      </footer>
+      
     </div>
   )
 }
