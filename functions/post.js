@@ -54,7 +54,7 @@ request.get(fetchUrl,
 '<meta property="og:description" content="'+body.data.post.excerpt+'">'+
 '<meta property="og:url" content="'+curUrl+'">'+
 '<meta property="og:site_name" content="UrduNews">'+
-'<meta property="article:section" content="'+body.data.post.categories.nodes.name+'">'+
+'<meta property="article:section" content="'+body.data.categories.nodes.name+'">'+
 '<meta property="og:image" content="'+body.data.post.featuredImage.node.sourceUrl+'">'+
 '<meta property="og:image:alt" content="'+body.data.post.title+'">')
 res.write('<style>'+
