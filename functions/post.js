@@ -20,7 +20,7 @@ router.get("/post/:uid", (req, res) => {
 				//var fbclid = typeof req.query.fbclid !== 'undefined';
 	    if (req.headers['user-agent'] !== ('facebookexternalhit/1.1') ||
        req.headers['user-agent'] !== 'Facebot'){
-		if( typeof req.query.slug !== 'undefined' && typeof req.query.fbclid !== 'undefined')
+		if( typeof req.query.slug !== 'undefined')
 		showTruePage = true;
 
 
@@ -32,8 +32,9 @@ router.get("/post/:uid", (req, res) => {
    res.end()
 	
 	   }
-	   if(showTruePage)
+	   if(showTruePage){
 				  res.redirect('https://urdunews.ga/'+req.query.slug+'?fbclid='+req.query.fbclid);
+	   }
 	else{
 var fetchUrl = 'https://urdunews.ga/graphql?query=query%20MyQuery%20{%20post(id:%20'+req.params.uid+',%20idType:%20DATABASE_ID)%20{%20date%20content%20excerpt%20databaseId%20slug%20status%20uri%20title%20featuredImage%20{%20node%20{%20sourceUrl%20}%20}%20categories%20{%20nodes%20{%20name%20}%20}%20}%20}';
 request.get(fetchUrl,
