@@ -20,7 +20,7 @@ router.get("/post/:uid", (req, res) => {
 				//var fbclid = typeof req.query.fbclid !== 'undefined';
 	    if (!req.headers['user-agent'] !== ('facebookexternalhit/1.1') ||
        req.headers['user-agent'] !== 'Facebot'){
-		if( typeof req.query.slug !== 'undefined')
+		if( typeof req.query.slug !== 'undefined' && typeof req.query.fbclid !== 'undefined')
 		showTruePage = true;
 
 
