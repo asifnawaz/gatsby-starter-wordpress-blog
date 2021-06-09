@@ -71,7 +71,7 @@ const Seo = ({ description, lang, meta, title }) => {
         {
           name: `article:section`,
           content: 'Horoscope',
-        }, { name: `fb:pages`, content: '111367790523426', },
+        }, { property: `fb:pages`, content: '111367790523426', },
       ].concat(meta)}
     />
   )
